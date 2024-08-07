@@ -1,0 +1,36 @@
+<app-header></app-header>
+<div class="container">
+    <h3 class="p-3">Wishlist</h3>
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center mt-5"
+        *ngIf="wishitems.length>0;else elsedata">
+        <div class="col mb-5" *ngFor="let i of wishitems">
+            <div class="card h-100">
+                <!-- Product image-->
+                <img class="card-img-top" style="cursor: pointer;" src="{{i.image}}" alt="product-image"
+                    height="250px" />
+                <!-- Product details-->
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Product name-->
+                        <h5 class="fw-bolder">{{i.title}}</h5>
+                        <!-- Product price-->
+                        {{i.price}}
+                    </div>
+                </div>
+                <!-- Product actions-->
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex justify-content-between">
+                    <button href="" class="btn" (click)="deleteWishItem(i._id)">
+                        <i class="fa-solid fa-heart-circle-minus" style="color: #f00;"></i>
+                    </button>
+                    <button href="" class="btn" (click)="addCart(i)">
+                        <i class="fa-solid fa-cart-plus" style="color: rgb(72, 0, 255);"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <ng-template #elsedata>
+        <h1 class="text-danger text-center">No Wishlist Items Added Yet!!</h1>
+    </ng-template>
+</div>

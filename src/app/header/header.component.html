@@ -1,0 +1,35 @@
+<nav class="navbar navbar-light" style="background-color: rgb(200, 206, 120)">
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1"><i class="fa-solid fa-cash-register" style="color: #b197fc;"></i>
+            Ekart</span>
+        <div class="d-flex">
+            <div class="d-flex justify-content-center me-1">
+                <input type="text" #searchkey placeholder="Enter Keyword" class="form-control">
+                <button class="btn me-1" (click)="searchInput(searchkey.value)"><i
+                        class="fa-solid fa-magnifying-glass "></i></button>
+            </div>
+            <a routerLink="/wish" class="btn btn-outline-dark me-3">
+                <i class="fa-solid fa-heart" style="color: #f00;"></i>
+                Wishlist
+                <Span class="badge">{{wishCount}}</Span>
+            </a>
+            <a routerLink="/cart" class="btn btn-outline-dark me-3">
+                <i class="fa-solid fa-cart-shopping" style="color: rgb(72, 0, 255);"></i>
+                Cart
+                <Span class="badge">{{cartCount}}</Span>
+            </a>
+            <a routerLink="/log" class="btn btn-outline-dark me-3" *ngIf="!loginStatus">
+                <i class="fa-solid fa-user-line" style="color: rgb(72, 0, 255);"></i>
+                Login</a>
+            <span *ngIf="loginStatus">
+                <i class="fa-solid fa-user"></i>
+                {{user}}
+                <button class="btn btn-danger" (click)="logout()">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Logout
+                </button>
+            </span>
+        </div>
+    </div>
+
+</nav>

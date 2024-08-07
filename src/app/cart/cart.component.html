@@ -1,0 +1,74 @@
+<app-header></app-header>
+
+<div class="p-2 row container-fluid">
+    <div class="col-md-9">
+        <h3>Cart summary</h3>
+        <table class="table table-bordered" *ngIf="cartItems.length>0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of cartItems ">
+                    <td>{{i.id}}</td>
+                    <td>{{i.title}}</td>
+                    <td>{{i.price}}</td>
+                    <td>
+                        <img src="{{i.image}}" alt="" height="100px">
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn" (click)="incQuantity(i._id)">+</button>
+                            <input type="text" class="form-control" readonly [value]="i.quantity">
+                            <button class="btn" (click)="decQuantity(i._id)">-</button>
+                        </div>
+                    </td>
+                    <td>
+                        {{i.totalPrice}}
+                    </td>
+                    <td (click)="deleteItem(i._id)">
+                        <i class="fa-solid fa-trash" style="color: #e1092a;"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h1 class="text-center text-danger" *ngIf="!(cartItems.length>0)">Your Cart is Empty</h1>
+        <div class="my-3 d-flex justify-content-between align-items-">
+            <button class="btn btn-danger" (click)="emptyCartItems()">Empty Cart</button>
+            <button class="btn btn-info" routerLink="">Shop More...</button>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="mt-5 border shadow d-flex flex-column align-items-center p-4">
+            <div class="h3">
+                Total Amount : <span class="text-warning">{{carttotal|currency}}</span>
+            </div>
+            <p *ngIf="!(couponStatus)">Click for Offers <span class="btn btn-link" (click)="offerClick()"><i
+                        class="fa-solid fa-tag"></i>Offers</span></p>
+            <div class="my-2" *ngIf="couponStatus">
+                <ng-container *ngIf="carttotal>=100 && carttotal<250 && !couponCheckStatus">
+                    <img src="https://img.freepik.com/premium-vector/coupon-mockup-with-5-percent-off-discount-voucher-gift-coupon-coupon-promotion-sale-vector_662353-255.jpg"
+                        height="120px" alt="5%" class="mx-5" (click)="discount5()">
+                </ng-container>
+                <ng-container *ngIf="carttotal>=250 && carttotal<500 && !couponCheckStatus">
+                    <img src="https://d2kh7o38xye1vj.cloudfront.net/wp-content/uploads/2024/01/Percentage-Coupons.webp"
+                        alt="20%" height="120px" class="mx5" (click)="discount20()">
+                </ng-container>
+                <ng-container *ngIf="carttotal>=500 && !couponCheckStatus">
+                    <img src="https://www.shutterstock.com/image-vector/50-coupon-promotion-sale-website-260nw-2039676860.jpg"
+                        alt="50%" height="120px" class="mx-5" (click)="discount50()">
+                </ng-container>
+            </div>
+            <div class="d-grid">
+                <button class="btn btn-success" (click)="checkout()">Checkout</button>
+            </div>
+        </div>
+    </div>
+</div>

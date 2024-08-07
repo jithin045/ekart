@@ -1,0 +1,39 @@
+<div class="w-100 d-flex justify-content-center align-items-center p-5">
+
+    <div class="row w-50 border shadow bg-light">
+
+        <div class="col">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/login-10299071-8333958.png"
+                class="img-fluid" alt="login img">
+        </div>
+
+        <div class="col p-3 d-flex flex-column justify-content-center align-items-center">
+
+            <h4>Login</h4>
+
+            <form [formGroup]="logForm" (submit)="handleSubmit()">
+
+                <input type="email" formControlName="email" class="form-control mb-3" placeholder="Enter your Email Id"
+                    name="email">
+                <div class="text-danger" *ngIf="logForm.get('email')?.errors && logForm.get('email')?.touched">
+                    *Invalid email
+                </div>
+
+                <input type="password" formControlName="password" class="form-control mb-3"
+                    placeholder="Enter your password" name="paqwad ">
+                <div class="text-danger" *ngIf="logForm.get('password')?.errors && logForm.get('password')?.touched">
+                    *Invalid password
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-info" [disabled]="logForm.invalid" type="submit">Login</button>
+                    <a class="btn btn-link" routerLink="/reg">new User?</a>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
