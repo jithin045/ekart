@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class ApiService {
 
 
-  base_url: any = "http://localhost:3000"
+  base_url: any = "https://ekart-server-o7cn.onrender.com"
 
 
   wishCountBS = new BehaviorSubject(0)
