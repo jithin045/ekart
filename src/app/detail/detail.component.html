@@ -13,10 +13,10 @@
                 <p class="lead">{{product.description}}</p>
 
                 <div class="d-flex justify-content-between">
-                    <button href="" class="btn btn-outline-dark flex-shrink-0">
+                    <button href="" class="btn btn-outline-dark flex-shrink-0" (click)="addWish(product)">
                         <i class="fa-solid fa-heart-circle-plus" style="color: #f00;"></i>
                         Add to Wishlist</button>
-                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                    <button class="btn btn-outline-dark flex-shrink-0" (click)="addCart(product)">
                         <i class="fa-solid fa-cart-plus" style="color: rgb(72, 0, 255);"></i>
                         Add to cart
                     </button>
